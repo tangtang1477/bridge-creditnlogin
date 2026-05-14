@@ -124,7 +124,7 @@
     background:
       linear-gradient(180deg, rgba(113, 240, 246, 0.62) 0%, rgba(69, 196, 246, 0.42) 50%, rgba(113, 240, 246, 0.48) 100%);
     border: none;
-    border-radius: 0.875rem;
+    border-radius: 9999px;
     cursor: pointer;
     overflow: hidden;
     transition: box-shadow 0.35s ease, transform 0.15s ease, background 0.35s ease;
