@@ -96,10 +96,13 @@ export function LoginBridgePanel({
 
       {/* Idle / linked CTA */}
       {stage.kind === "idle" && (
+        <p className="mt-5 text-xs text-white/55">{tr("link_hint_first_time", locale)}</p>
+      )}
+      {stage.kind === "idle" && (
         <button
           onClick={start}
           disabled={busy}
-          className="glass-btn mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+          className="glass-btn mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
         >
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
           {tr("link_and_open", locale)}

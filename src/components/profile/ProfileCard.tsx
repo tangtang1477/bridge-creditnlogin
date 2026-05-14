@@ -38,8 +38,7 @@ export function ProfileCard({ locale }: { locale: Locale }) {
           </div>
           <div className="mt-2">
             <Link
-              to="/studio-bridge"
-              search={{ tab: "login" }}
+              to="/studio-login"
               className="glass-btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
             >
               {tr("login_to_studio", locale)}

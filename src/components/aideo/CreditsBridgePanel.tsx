@@ -27,8 +27,7 @@ export function CreditsBridgePanel({
         <h3 className="text-lg font-semibold">{tr("credits_locked_title", locale)}</h3>
         <p className="mt-2 text-sm text-white/60">{tr("credits_locked_sub", locale)}</p>
         <Link
-          to="/studio-bridge"
-          search={{ tab: "login" }}
+          to="/studio-login"
           className="glass-btn mt-6 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold"
         >
           {tr("go_to_login_bridge", locale)}
