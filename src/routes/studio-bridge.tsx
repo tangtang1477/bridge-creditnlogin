@@ -57,7 +57,7 @@ function StudioBridgePage() {
   const refresh = () => setReloadKey((k) => k + 1);
 
   const setTab = (t: Tab) =>
-    navigate({ search: (prev) => ({ ...prev, tab: t }), replace: true });
+    navigate({ search: (prev: Search) => ({ ...prev, tab: t }), replace: true });
 
   return (
     <div data-theme="aideo-dark" className="min-h-screen bg-background text-foreground">
