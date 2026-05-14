@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "credits&login" },
+      { name: "description", content: "Unified Flow enables seamless account and credit integration between MovieFlow and Studio." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "credits&login" },
+      { property: "og:description", content: "Unified Flow enables seamless account and credit integration between MovieFlow and Studio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "credits&login" },
+      { name: "twitter:description", content: "Unified Flow enables seamless account and credit integration between MovieFlow and Studio." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8bc285c8-e745-45c0-ab02-5f4dd2581d5f/id-preview-f653e85e--db290b9b-022e-4027-85d6-a82ec5386099.lovable.app-1778752343504.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8bc285c8-e745-45c0-ab02-5f4dd2581d5f/id-preview-f653e85e--db290b9b-022e-4027-85d6-a82ec5386099.lovable.app-1778752343504.png" },
     ],
     links: [
       {
