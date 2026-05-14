@@ -31,7 +31,7 @@ function BalanceCard({
   highlight?: boolean;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-md glass-card p-5">
+    <div className="relative overflow-hidden rounded-2xl glass-card p-5">
       <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accent}`} />
       <div className="relative">
         <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{label}</p>

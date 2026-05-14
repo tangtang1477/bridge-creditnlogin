@@ -25,7 +25,7 @@ export function TransferHistoryTable({ locale, reloadKey }: { locale: Locale; re
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <section className="rounded-md glass-card p-5 sm:p-6">
+    <section className="rounded-2xl glass-card p-5 sm:p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">{tr("history", locale)}</h2>
         <span className="text-xs text-muted-foreground">{total}</span>

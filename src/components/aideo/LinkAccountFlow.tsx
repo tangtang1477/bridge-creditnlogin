@@ -49,7 +49,7 @@ export function LinkAccountFlow({
 
   return (
     <div className="mt-8 animate-fade-in-up">
-      <section className="rounded-md glass-card p-5 sm:p-6">
+      <section className="rounded-2xl glass-card p-5 sm:p-6">
         <div className="flex items-center gap-2">
           <span className="rounded-full border border-border bg-white/5 px-2 py-0.5 text-xs text-muted-foreground">
             {tr("unlinked", locale)}
@@ -135,7 +135,7 @@ function PasswordModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-md glass-card p-6 animate-fade-in-up"
+        className="w-full max-w-md rounded-2xl glass-card p-6 animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-lg font-semibold">{tr("set_aideo_password", locale)}</h3>
@@ -166,7 +166,7 @@ function PasswordModal({
           <button
             onClick={submit}
             disabled={submitting}
-            className="glass-btn rounded-md px-5 py-2 text-sm font-semibold"
+            className="glass-btn rounded-xl px-5 py-2 text-sm font-semibold"
           >
             {submitting ? "…" : tr("submit", locale)}
           </button>
@@ -265,7 +265,7 @@ function WaitingOverlay({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md rounded-md glass-card p-6 text-center animate-fade-in-up">
+      <div className="w-full max-w-md rounded-2xl glass-card p-6 text-center animate-fade-in-up">
         <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-2 border-primary/30 border-t-primary" />
         <h3 className="text-lg font-semibold">{tr("waiting_link", locale)}</h3>
         <p className="mt-1 text-xs text-muted-foreground font-mono">{email}</p>
@@ -283,7 +283,7 @@ function WaitingOverlay({
         <div className="mt-6 flex flex-col gap-2">
           <button
             onClick={manualRefresh}
-            className="glass-btn rounded-md px-4 py-2 text-sm font-semibold"
+            className="glass-btn rounded-xl px-4 py-2 text-sm font-semibold"
           >
             {tr("i_completed_link", locale)}
           </button>

@@ -82,7 +82,7 @@ export function TransferPanel({
   };
 
   return (
-    <section className="rounded-md glass-card p-5 sm:p-6">
+    <section className="rounded-2xl glass-card p-5 sm:p-6">
       <h2 className="text-lg font-semibold">{tr("transfer", locale)}</h2>
 
       {/* Direction tabs */}
@@ -163,7 +163,7 @@ export function TransferPanel({
         <button
           disabled={!isValidNumber || !validation?.ok || executing}
           onClick={() => setConfirmOpen(true)}
-          className="glass-btn rounded-md px-5 py-2 text-sm font-semibold"
+          className="glass-btn rounded-xl px-5 py-2 text-sm font-semibold"
         >
           {tr("transfer", locale)}
         </button>

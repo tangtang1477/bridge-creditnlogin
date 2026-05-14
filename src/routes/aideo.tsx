@@ -130,8 +130,8 @@ function PageIntro({ locale }: { locale: Locale }) {
 function SkeletonBlock() {
   return (
     <div className="mt-8 grid gap-4">
-      <div className="h-28 animate-pulse rounded-md glass-card" />
-      <div className="h-40 animate-pulse rounded-md glass-card" />
+      <div className="h-28 animate-pulse rounded-2xl glass-card" />
+      <div className="h-40 animate-pulse rounded-2xl glass-card" />
     </div>
   );
 }
@@ -153,7 +153,7 @@ function IneligibleView({ locale, eligibility }: { locale: Locale; eligibility: 
   }, [eligibility.reason]);
 
   return (
-    <div className="mt-10 rounded-md glass-card p-8 animate-fade-in-up">
+    <div className="mt-10 rounded-2xl glass-card p-8 animate-fade-in-up">
       <div className="flex items-center gap-2">
         <span className="rounded-full border border-destructive/40 bg-destructive/10 px-2 py-0.5 text-xs text-destructive">
           {tr("ineligible_chip", locale)}
