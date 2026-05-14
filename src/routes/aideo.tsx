@@ -13,16 +13,16 @@ import { TransferHistoryTable } from "@/components/aideo/TransferHistoryTable";
 export const Route = createFileRoute("/aideo")({
   head: () => ({
     meta: [
-      { title: "MovieFlow × Aideo · Credits Bridge" },
+      { title: "MovieFlow × Studio · Credits Bridge" },
       {
         name: "description",
         content:
-          "Link your Aideo Studio account and transfer personal credits 1:1 between MovieFlow and Aideo.",
+          "Link your Studio account and transfer personal credits 1:1 between MovieFlow and Studio.",
       },
-      { property: "og:title", content: "MovieFlow × Aideo · Credits Bridge" },
+      { property: "og:title", content: "MovieFlow × Studio · Credits Bridge" },
       {
         property: "og:description",
-        content: "1:1 personal credits transfer between MovieFlow and Aideo Studio.",
+        content: "1:1 personal credits transfer between MovieFlow and Studio.",
       },
     ],
   }),

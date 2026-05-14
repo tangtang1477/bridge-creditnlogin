@@ -34,8 +34,8 @@ export function TransferConfirmDialog({
       >
         <h3 className="text-lg font-semibold">{tr("confirm_transfer", locale)}</h3>
         <div className="mt-4 grid gap-2 text-sm">
-          <Row k={tr("source", locale)} v={`${sourceLabel} (${direction === "movieflow_to_aideo" ? "MovieFlow" : "Aideo"})`} />
-          <Row k={tr("target", locale)} v={`${targetLabel} (${direction === "movieflow_to_aideo" ? "Aideo" : "MovieFlow"})`} />
+          <Row k={tr("source", locale)} v={`${sourceLabel} (${direction === "movieflow_to_aideo" ? "MovieFlow" : "Studio"})`} />
+          <Row k={tr("target", locale)} v={`${targetLabel} (${direction === "movieflow_to_aideo" ? "Studio" : "MovieFlow"})`} />
           <Row k={tr("deduct", locale)} v={amount.toLocaleString()} highlight="destructive" />
           <Row k={tr("credit", locale)} v={amount.toLocaleString()} highlight="primary" />
           <Row k={tr("rate", locale)} v="1 : 1" />

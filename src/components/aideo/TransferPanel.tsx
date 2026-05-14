@@ -25,8 +25,8 @@ export function TransferPanel({
 
   const sourceBalance =
     direction === "movieflow_to_aideo" ? link.movieflow_transferable : link.aideo_transferable;
-  const sourceLabel = direction === "movieflow_to_aideo" ? "MovieFlow" : "Aideo";
-  const targetLabel = direction === "movieflow_to_aideo" ? "Aideo" : "MovieFlow";
+  const sourceLabel = direction === "movieflow_to_aideo" ? "MovieFlow" : "Studio";
+  const targetLabel = direction === "movieflow_to_aideo" ? "Studio" : "MovieFlow";
 
   const numAmount = Number(amount);
   const isValidNumber = /^\d+$/.test(amount) && numAmount > 0;
