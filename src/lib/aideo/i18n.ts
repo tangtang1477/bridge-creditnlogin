@@ -78,6 +78,47 @@ export const t = {
   validation_ok: { zh: "可以转移", en: "Available" },
   ineligible_chip: { zh: "不可用", en: "Unavailable" },
   back_home: { zh: "返回首页", en: "Back home" },
+  // profile + bridge
+  nav_home: { zh: "首页", en: "Home" },
+  nav_studio_world: { zh: "Studio 世界", en: "Studio World" },
+  nav_toolbox: { zh: "工具箱", en: "Toolbox" },
+  nav_assets: { zh: "素材资产", en: "Assets" },
+  nav_channel: { zh: "频道", en: "Channel" },
+  nav_workspace: { zh: "工作室", en: "Workspace" },
+  free_credit: { zh: "Free Credit", en: "Free Credit" },
+  recharge_credits: { zh: "充值积分", en: "Recharge" },
+  profile_likes: { zh: "Likes", en: "Likes" },
+  profile_credit_rewards: { zh: "Credit rewards", en: "Credit rewards" },
+  profile_fission_cash: { zh: "Fission cash", en: "Fission cash" },
+  profile_shared: { zh: "Shared", en: "Shared" },
+  profile_my_likes: { zh: "My Likes", en: "My Likes" },
+  profile_no_posts: { zh: "暂无内容~", en: "No posts yet~" },
+  login_to_studio: { zh: "登录到 Studio", en: "Sign in to Studio" },
+  bridge_title: { zh: "MovieFlow × Studio", en: "MovieFlow × Studio" },
+  bridge_sub: {
+    zh: "在这里完成账号关联与积分互转。",
+    en: "Link accounts and transfer credits here.",
+  },
+  tab_login_bridge: { zh: "登录互通", en: "Login Bridge" },
+  tab_credits_bridge: { zh: "积分互通", en: "Credits Bridge" },
+  login_bridge_title: { zh: "登录互通", en: "Login Bridge" },
+  login_bridge_sub: {
+    zh: "首次关联会创建同邮箱的 Studio 账号；若邮箱已被占用，请前往 Studio 验证密码。",
+    en: "First-time linking creates a Studio account with the same email; if the email is taken, verify the Studio password.",
+  },
+  link_and_open: { zh: "关联并打开 Studio", en: "Link & open Studio" },
+  waiting_for_studio_auth: {
+    zh: "请在新打开的 Studio 标签页输入密码完成验证…",
+    en: "Please complete password verification in the new Studio tab…",
+  },
+  link_done_redirecting: { zh: "关联成功，正在打开 Studio…", en: "Linked! Opening Studio…" },
+  credits_locked_title: { zh: "尚未关联 Studio", en: "Studio not linked" },
+  credits_locked_sub: {
+    zh: "请先在『登录互通』完成账号关联，再使用积分互转。",
+    en: "Please complete linking in the Login Bridge tab first.",
+  },
+  go_to_login_bridge: { zh: "前往登录互通", en: "Go to Login Bridge" },
+  unlink_soon: { zh: "解除关联（即将上线）", en: "Unlink (coming soon)" },
 } satisfies Record<string, { zh: string; en: string }>;
 
 export type DictKey = keyof typeof t;
