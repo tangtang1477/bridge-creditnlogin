@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudioBridgeRouteImport } from './routes/studio-bridge'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as AideoRouteImport } from './routes/aideo'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StudioBridgeRoute = StudioBridgeRouteImport.update({
+  id: '/studio-bridge',
+  path: '/studio-bridge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AideoRoute = AideoRouteImport.update({
   id: '/aideo',
   path: '/aideo',
@@ -26,31 +38,53 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aideo': typeof AideoRoute
+  '/profile': typeof ProfileRoute
+  '/studio-bridge': typeof StudioBridgeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aideo': typeof AideoRoute
+  '/profile': typeof ProfileRoute
+  '/studio-bridge': typeof StudioBridgeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aideo': typeof AideoRoute
+  '/profile': typeof ProfileRoute
+  '/studio-bridge': typeof StudioBridgeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aideo'
+  fullPaths: '/' | '/aideo' | '/profile' | '/studio-bridge'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aideo'
-  id: '__root__' | '/' | '/aideo'
+  to: '/' | '/aideo' | '/profile' | '/studio-bridge'
+  id: '__root__' | '/' | '/aideo' | '/profile' | '/studio-bridge'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AideoRoute: typeof AideoRoute
+  ProfileRoute: typeof ProfileRoute
+  StudioBridgeRoute: typeof StudioBridgeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/studio-bridge': {
+      id: '/studio-bridge'
+      path: '/studio-bridge'
+      fullPath: '/studio-bridge'
+      preLoaderRoute: typeof StudioBridgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/aideo': {
       id: '/aideo'
       path: '/aideo'
@@ -71,6 +105,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AideoRoute: AideoRoute,
+  ProfileRoute: ProfileRoute,
+  StudioBridgeRoute: StudioBridgeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
