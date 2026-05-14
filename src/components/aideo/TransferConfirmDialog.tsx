@@ -29,13 +29,13 @@ export function TransferConfirmDialog({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-md glass-card p-6 animate-fade-in-up"
+        className="w-full max-w-md rounded-2xl glass-card p-6 animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-lg font-semibold">{tr("confirm_transfer", locale)}</h3>
         <div className="mt-4 grid gap-2 text-sm">
-          <Row k={tr("source", locale)} v={`${sourceLabel} (${direction === "movieflow_to_aideo" ? "MovieFlow" : "Aideo"})`} />
-          <Row k={tr("target", locale)} v={`${targetLabel} (${direction === "movieflow_to_aideo" ? "Aideo" : "MovieFlow"})`} />
+          <Row k={tr("source", locale)} v={`${sourceLabel} (${direction === "movieflow_to_aideo" ? "MovieFlow" : "Studio"})`} />
+          <Row k={tr("target", locale)} v={`${targetLabel} (${direction === "movieflow_to_aideo" ? "Studio" : "MovieFlow"})`} />
           <Row k={tr("deduct", locale)} v={amount.toLocaleString()} highlight="destructive" />
           <Row k={tr("credit", locale)} v={amount.toLocaleString()} highlight="primary" />
           <Row k={tr("rate", locale)} v="1 : 1" />
@@ -45,14 +45,14 @@ export function TransferConfirmDialog({
           <button
             disabled={executing}
             onClick={onClose}
-            className="rounded-md border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+            className="rounded-xl border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
           >
             {tr("cancel", locale)}
           </button>
           <button
             disabled={executing}
             onClick={onConfirm}
-            className="glass-btn rounded-md px-5 py-2 text-sm font-semibold"
+            className="glass-btn rounded-xl px-5 py-2 text-sm font-semibold"
           >
             {executing ? "…" : tr("confirm_transfer", locale)}
           </button>

@@ -13,16 +13,16 @@ import { TransferHistoryTable } from "@/components/aideo/TransferHistoryTable";
 export const Route = createFileRoute("/aideo")({
   head: () => ({
     meta: [
-      { title: "MovieFlow × Aideo · Credits Bridge" },
+      { title: "MovieFlow × Studio · Credits Bridge" },
       {
         name: "description",
         content:
-          "Link your Aideo Studio account and transfer personal credits 1:1 between MovieFlow and Aideo.",
+          "Link your Studio account and transfer personal credits 1:1 between MovieFlow and Studio.",
       },
-      { property: "og:title", content: "MovieFlow × Aideo · Credits Bridge" },
+      { property: "og:title", content: "MovieFlow × Studio · Credits Bridge" },
       {
         property: "og:description",
-        content: "1:1 personal credits transfer between MovieFlow and Aideo Studio.",
+        content: "1:1 personal credits transfer between MovieFlow and Studio.",
       },
     ],
   }),
@@ -100,12 +100,12 @@ function Header({ locale, setLocale }: { locale: Locale; setLocale: (l: Locale) 
           <span className="inline-block h-2 w-2 rounded-full bg-primary cyan-glow" />
           <span className="text-sm font-semibold tracking-wide">{tr("brand", locale)}</span>
         </Link>
-        <div className="flex items-center gap-1 rounded-md border border-border/70 p-0.5 text-xs">
+        <div className="flex items-center gap-1 rounded-xl border border-border/70 p-0.5 text-xs">
           {(["zh", "en"] as Locale[]).map((l) => (
             <button
               key={l}
               onClick={() => setLocale(l)}
-              className={`rounded px-2 py-1 transition ${
+              className={`rounded-lg px-2 py-1 transition ${
                 locale === l ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -130,8 +130,8 @@ function PageIntro({ locale }: { locale: Locale }) {
 function SkeletonBlock() {
   return (
     <div className="mt-8 grid gap-4">
-      <div className="h-28 animate-pulse rounded-md glass-card" />
-      <div className="h-40 animate-pulse rounded-md glass-card" />
+      <div className="h-28 animate-pulse rounded-2xl glass-card" />
+      <div className="h-40 animate-pulse rounded-2xl glass-card" />
     </div>
   );
 }
@@ -153,7 +153,7 @@ function IneligibleView({ locale, eligibility }: { locale: Locale; eligibility: 
   }, [eligibility.reason]);
 
   return (
-    <div className="mt-10 rounded-md glass-card p-8 animate-fade-in-up">
+    <div className="mt-10 rounded-2xl glass-card p-8 animate-fade-in-up">
       <div className="flex items-center gap-2">
         <span className="rounded-full border border-destructive/40 bg-destructive/10 px-2 py-0.5 text-xs text-destructive">
           {tr("ineligible_chip", locale)}
@@ -164,7 +164,7 @@ function IneligibleView({ locale, eligibility }: { locale: Locale; eligibility: 
       </div>
       <h2 className="mt-3 text-2xl font-semibold">{tr("not_eligible_title", locale)}</h2>
       <p className="mt-2 max-w-md text-sm text-muted-foreground">{tr(subKey, locale)}</p>
-      <button className="glass-btn mt-6 rounded-md px-5 py-2.5 text-sm font-semibold">
+      <button className="glass-btn mt-6 rounded-xl px-5 py-2.5 text-sm font-semibold">
         {tr("upgrade", locale)}
       </button>
     </div>

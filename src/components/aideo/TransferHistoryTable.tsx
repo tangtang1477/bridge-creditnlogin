@@ -25,7 +25,7 @@ export function TransferHistoryTable({ locale, reloadKey }: { locale: Locale; re
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <section className="rounded-md glass-card p-5 sm:p-6">
+    <section className="rounded-2xl glass-card p-5 sm:p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">{tr("history", locale)}</h2>
         <span className="text-xs text-muted-foreground">{total}</span>
@@ -75,14 +75,14 @@ export function TransferHistoryTable({ locale, reloadKey }: { locale: Locale; re
             <button
               disabled={page <= 1}
               onClick={() => setPage((p) => p - 1)}
-              className="rounded border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
+              className="rounded-lg border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
             >
               {tr("prev", locale)}
             </button>
             <button
               disabled={page >= totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="rounded border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
+              className="rounded-lg border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
             >
               {tr("next", locale)}
             </button>

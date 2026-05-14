@@ -19,25 +19,25 @@ function Index() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/aideo"
-            className="rounded-md bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-cyan-200"
+            className="rounded-xl bg-cyan-300 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-cyan-200"
           >
-            Open /aideo
+            Open Studio
           </Link>
           <a
             href="/aideo?mock=linked"
-            className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300 hover:text-cyan-300"
+            className="rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300 hover:text-cyan-300"
           >
             Linked state
           </a>
           <a
             href="/aideo?mock=occupied"
-            className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300 hover:text-cyan-300"
+            className="rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300 hover:text-cyan-300"
           >
             Occupied email
           </a>
           <a
             href="/aideo?mock=ineligible"
-            className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300 hover:text-cyan-300"
+            className="rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300 hover:text-cyan-300"
           >
             Ineligible
           </a>

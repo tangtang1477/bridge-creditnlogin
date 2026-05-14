@@ -32,7 +32,7 @@ export function LinkStatusCard({
   };
 
   return (
-    <section className="rounded-md glass-card p-5 sm:p-6">
+    <section className="rounded-2xl glass-card p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
@@ -52,14 +52,14 @@ export function LinkStatusCard({
         <div className="flex flex-shrink-0 items-center gap-2">
           <button
             onClick={onRefresh}
-            className="rounded-md border border-border/70 bg-transparent px-3 py-2 text-xs text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
+            className="rounded-xl border border-border/70 bg-transparent px-3 py-2 text-xs text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
           >
             {tr("refresh", locale)}
           </button>
           <button
             disabled={opening}
             onClick={openAideo}
-            className="glass-btn rounded-md px-4 py-2 text-sm font-semibold"
+            className="glass-btn rounded-xl px-4 py-2 text-sm font-semibold"
           >
             {opening ? "…" : tr("open_aideo", locale)}
           </button>
