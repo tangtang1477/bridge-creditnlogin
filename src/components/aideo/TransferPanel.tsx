@@ -86,7 +86,7 @@ export function TransferPanel({
       <h2 className="text-lg font-semibold">{tr("transfer", locale)}</h2>
 
       {/* Direction tabs */}
-      <div className="mt-4 grid grid-cols-2 gap-1 rounded-md border border-border/70 p-1">
+      <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl border border-border/70 p-1">
         <DirectionTab
           active={direction === "movieflow_to_aideo"}
           onClick={() => setDirection("movieflow_to_aideo")}
@@ -123,7 +123,7 @@ export function TransferPanel({
             value={amount}
             onChange={(e) => setAmount(e.target.value.replace(/[^\d]/g, ""))}
             placeholder={tr("amount_placeholder", locale)}
-            className="flex-1 min-w-[180px] rounded-md border border-border bg-black/40 px-3 py-2 font-mono text-base text-foreground outline-none focus:border-primary"
+            className="flex-1 min-w-[180px] rounded-xl border border-border bg-black/40 px-3 py-2 font-mono text-base text-foreground outline-none focus:border-primary"
           />
           <div className="flex items-center gap-1">
             {[
@@ -134,7 +134,7 @@ export function TransferPanel({
               <button
                 key={q.l}
                 onClick={() => setQuick(q.v)}
-                className="rounded-md border border-border/70 px-2 py-1.5 text-xs text-muted-foreground transition hover:border-primary hover:text-primary"
+                className="rounded-xl border border-border/70 px-2 py-1.5 text-xs text-muted-foreground transition hover:border-primary hover:text-primary"
               >
                 {q.l}
               </button>
@@ -156,7 +156,7 @@ export function TransferPanel({
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <button
           onClick={checkAvailability}
-          className="rounded-md border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
+          className="rounded-xl border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
         >
           {tr("check_availability", locale)}
         </button>
@@ -196,7 +196,7 @@ function DirectionTab({
   return (
     <button
       onClick={onClick}
-      className={`rounded px-3 py-2 text-sm font-medium transition ${
+      className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
         active ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
       }`}
     >
@@ -207,7 +207,7 @@ function DirectionTab({
 
 function SideBox({ title, name, balance }: { title: string; name: string; balance: number }) {
   return (
-    <div className="rounded-md border border-border/70 bg-black/30 p-3">
+    <div className="rounded-xl border border-border/70 bg-black/30 p-3">
       <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{title}</p>
       <p className="mt-1 text-sm font-semibold">{name}</p>
       <p className="mt-0.5 font-mono text-xs text-muted-foreground">{balance.toLocaleString()}</p>

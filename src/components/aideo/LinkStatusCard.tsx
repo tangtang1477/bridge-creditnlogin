@@ -52,7 +52,7 @@ export function LinkStatusCard({
         <div className="flex flex-shrink-0 items-center gap-2">
           <button
             onClick={onRefresh}
-            className="rounded-md border border-border/70 bg-transparent px-3 py-2 text-xs text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
+            className="rounded-xl border border-border/70 bg-transparent px-3 py-2 text-xs text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
           >
             {tr("refresh", locale)}
           </button>

@@ -64,7 +64,7 @@ export function LinkAccountFlow({
         <button
           onClick={start}
           disabled={starting}
-          className="glass-btn mt-5 rounded-md px-5 py-2.5 text-sm font-semibold"
+          className="glass-btn mt-5 rounded-xl px-5 py-2.5 text-sm font-semibold"
         >
           {starting ? "…" : tr("link_account", locale)}
         </button>
@@ -159,7 +159,7 @@ function PasswordModal({
           <button
             onClick={onClose}
             disabled={submitting}
-            className="rounded-md border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+            className="rounded-xl border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
           >
             {tr("cancel", locale)}
           </button>
@@ -197,7 +197,7 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-md border border-border bg-black/40 px-3 py-2 text-sm outline-none focus:border-primary"
+        className="rounded-xl border border-border bg-black/40 px-3 py-2 text-sm outline-none focus:border-primary"
       />
     </label>
   );
@@ -289,7 +289,7 @@ function WaitingOverlay({
           </button>
           <button
             onClick={onClose}
-            className="rounded-md border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+            className="rounded-xl border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
           >
             {tr("cancel", locale)}
           </button>

@@ -45,7 +45,7 @@ export function TransferConfirmDialog({
           <button
             disabled={executing}
             onClick={onClose}
-            className="rounded-md border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+            className="rounded-xl border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
           >
             {tr("cancel", locale)}
           </button>

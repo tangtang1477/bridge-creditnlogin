@@ -75,14 +75,14 @@ export function TransferHistoryTable({ locale, reloadKey }: { locale: Locale; re
             <button
               disabled={page <= 1}
               onClick={() => setPage((p) => p - 1)}
-              className="rounded border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
+              className="rounded-lg border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
             >
               {tr("prev", locale)}
             </button>
             <button
               disabled={page >= totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="rounded border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
+              className="rounded-lg border border-border/70 px-3 py-1 text-muted-foreground transition hover:text-foreground disabled:opacity-40"
             >
               {tr("next", locale)}
             </button>
