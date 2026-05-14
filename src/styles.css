@@ -4,20 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -62,7 +48,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -97,39 +83,28 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+/* Aideo-themed scope: black background, cyan accent, white-outlined cards */
+[data-theme="aideo-dark"] {
+  --radius: 0.5rem;
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.04 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.06 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(0.86 0.13 197);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.16 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent: oklch(0.86 0.13 197);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.86 0.13 197);
 }
 
 @layer base {
@@ -141,4 +116,85 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer utilities {
+  .glass-btn {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(113, 240, 246, 0.38) 0%, rgba(69, 196, 246, 0.18) 50%, rgba(113, 240, 246, 0.22) 100%);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.35s ease, transform 0.15s ease, background 0.35s ease;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 0 12px rgba(113, 240, 246, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    color: #001417;
+  }
+  .glass-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 0.7px;
+    background:
+      linear-gradient(110.26deg, rgba(113, 240, 246, 0.6) 4.24%, rgba(255, 255, 255, 0.05) 64.28%),
+      linear-gradient(0deg, rgba(58, 58, 57, 0.6), rgba(113, 240, 246, 0.7));
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .glass-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 60%, rgba(113, 240, 246, 0.10) 100%);
+    pointer-events: none;
+  }
+  .glass-btn:hover {
+    background:
+      linear-gradient(180deg, rgba(113, 240, 246, 0.52) 0%, rgba(69, 196, 246, 0.28) 50%, rgba(113, 240, 246, 0.32) 100%);
+    box-shadow:
+      0 0 24px rgba(113, 240, 246, 0.45),
+      0 0 60px rgba(113, 240, 246, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+  .glass-btn:active {
+    transform: scale(0.97);
+  }
+  .glass-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .glass-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+  }
+
+  .cyan-glow {
+    box-shadow: 0 0 24px rgba(113, 240, 246, 0.18), 0 0 60px rgba(113, 240, 246, 0.06);
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(113, 240, 246, 0); }
+    50% { box-shadow: 0 0 16px 4px rgba(113, 240, 246, 0.35), 0 0 40px 8px rgba(113, 240, 246, 0.12); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up { animation: fadeInUp 0.35s ease-out both; }
+  .animate-glow-pulse { animation: glowPulse 2.4s ease-in-out infinite; }
 }
