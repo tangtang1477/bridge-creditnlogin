@@ -5,6 +5,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const linkBase =
+    "rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-cyan-300 hover:text-cyan-300";
   return (
     <div className="flex min-h-screen items-center justify-center bg-black text-white">
       <div className="max-w-xl text-center px-6">
@@ -13,8 +15,7 @@ function Index() {
           Studio Bridge Demo
         </h1>
         <p className="mt-3 text-sm text-white/60">
-          Open the profile page to see the Studio sign-in entry, or jump straight into the bridge.
-          Add <code>?mock=linked</code>, <code>?mock=occupied</code>, or <code>?mock=ineligible</code> to switch states.
+          打开个人主页查看 Studio 登录入口，或直接进入登录互通 / 积分互通页面。
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
@@ -23,33 +24,20 @@ function Index() {
           >
             MovieFlow Profile
           </Link>
-          <Link
-            to="/studio-bridge"
-            search={{ tab: "login" }}
-            className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-cyan-300 hover:text-cyan-300"
-          >
-            Login Bridge
+          <Link to="/studio-login" className={linkBase}>
+            登录互通 · 邮箱未占用
           </Link>
-          <Link
-            to="/studio-bridge"
-            search={{ tab: "credits", mock: "linked" }}
-            className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-cyan-300 hover:text-cyan-300"
-          >
-            Credits Bridge (linked)
+          <Link to="/studio-login" search={{ mock: "occupied" }} className={linkBase}>
+            登录互通 · 邮箱已占用
           </Link>
-          <Link
-            to="/studio-bridge"
-            search={{ tab: "login", mock: "occupied" }}
-            className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-cyan-300 hover:text-cyan-300"
-          >
-            Occupied email
+          <Link to="/studio-login" search={{ mock: "linked" }} className={linkBase}>
+            登录互通 · 已关联
           </Link>
-          <Link
-            to="/studio-bridge"
-            search={{ tab: "login", mock: "ineligible" }}
-            className="rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-cyan-300 hover:text-cyan-300"
-          >
-            Ineligible
+          <Link to="/studio-credits" search={{ mock: "linked" }} className={linkBase}>
+            积分互通（已关联）
+          </Link>
+          <Link to="/studio-login" search={{ mock: "ineligible" }} className={linkBase}>
+            订阅不达标
           </Link>
         </div>
       </div>

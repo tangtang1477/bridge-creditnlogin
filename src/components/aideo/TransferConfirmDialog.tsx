@@ -45,14 +45,14 @@ export function TransferConfirmDialog({
           <button
             disabled={executing}
             onClick={onClose}
-            className="rounded-xl border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+            className="rounded-full border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
           >
             {tr("cancel", locale)}
           </button>
           <button
             disabled={executing}
             onClick={onConfirm}
-            className="glass-btn rounded-xl px-5 py-2 text-sm font-semibold"
+            className="glass-btn rounded-full px-5 py-2 text-sm font-semibold"
           >
             {executing ? "…" : tr("confirm_transfer", locale)}
           </button>

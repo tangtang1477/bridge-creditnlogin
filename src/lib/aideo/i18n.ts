@@ -19,7 +19,7 @@ export const t = {
   aideo_balance: { zh: "Studio 个人可转余额", en: "Studio personal transferable" },
   transfer: { zh: "转移积分", en: "Transfer credits" },
   amount: { zh: "转移数量", en: "Amount" },
-  rate: { zh: "汇率", en: "Rate" },
+  rate: { zh: "比例", en: "Ratio" },
   fee: { zh: "手续费", en: "Fee" },
   source: { zh: "源账户", en: "From" },
   target: { zh: "目标账户", en: "To" },
@@ -119,6 +119,12 @@ export const t = {
   },
   go_to_login_bridge: { zh: "前往登录互通", en: "Go to Login Bridge" },
   unlink_soon: { zh: "解除关联（即将上线）", en: "Unlink (coming soon)" },
+  link_hint_first_time: {
+    zh: "首次关联会创建同邮箱的 Studio 账号，请先设置密码。",
+    en: "First-time linking creates a Studio account with this email — set a password to continue.",
+  },
+  goto_credits_bridge: { zh: "去积分互通 →", en: "Go to Credits Bridge →" },
+  back_to_login_bridge: { zh: "← 返回登录互通", en: "← Back to Login Bridge" },
 } satisfies Record<string, { zh: string; en: string }>;
 
 export type DictKey = keyof typeof t;
