@@ -29,7 +29,7 @@ export function TransferConfirmDialog({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-2xl glass-card p-6 animate-fade-in-up"
+        className="w-full max-w-md rounded-2xl modal-surface p-6 animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-lg font-semibold">{tr("confirm_transfer", locale)}</h3>
@@ -45,14 +45,14 @@ export function TransferConfirmDialog({
           <button
             disabled={executing}
             onClick={onClose}
-            className="rounded-full border border-border/70 px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground"
+            className="rounded-full border border-border/70 px-5 py-2.5 text-sm text-muted-foreground transition hover:text-foreground"
           >
             {tr("cancel", locale)}
           </button>
           <button
             disabled={executing}
             onClick={onConfirm}
-            className="glass-btn rounded-full px-5 py-2 text-sm font-semibold"
+            className="glass-btn rounded-full px-6 py-2.5 text-sm font-semibold"
           >
             {executing ? "…" : tr("confirm_transfer", locale)}
           </button>

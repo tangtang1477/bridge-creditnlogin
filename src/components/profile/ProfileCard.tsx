@@ -39,7 +39,7 @@ export function ProfileCard({ locale }: { locale: Locale }) {
           <div className="mt-2">
             <Link
               to="/studio-login"
-              className="glass-btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+              className="glass-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
             >
               {tr("login_to_studio", locale)}
               <ArrowRight className="h-4 w-4" />

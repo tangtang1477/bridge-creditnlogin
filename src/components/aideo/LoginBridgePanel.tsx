@@ -102,7 +102,7 @@ export function LoginBridgePanel({
         <button
           onClick={start}
           disabled={busy}
-          className="glass-btn mt-3 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+          className="glass-btn mt-3 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
         >
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
           {tr("link_and_open", locale)}
@@ -114,7 +114,7 @@ export function LoginBridgePanel({
           <button
             onClick={openStudio}
             disabled={busy}
-            className="glass-btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+            className="glass-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
           >
             {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ExternalLink className="h-4 w-4" />}
             {tr("open_aideo", locale)}
@@ -188,7 +188,7 @@ function PasswordModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-2xl glass-card p-6 animate-fade-in-up"
+        className="w-full max-w-md rounded-2xl modal-surface p-6 animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-lg font-semibold">{tr("set_aideo_password", locale)}</h3>
@@ -201,14 +201,14 @@ function PasswordModal({
           <button
             onClick={onClose}
             disabled={submitting}
-            className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:text-white"
+            className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 transition hover:text-white"
           >
             {tr("cancel", locale)}
           </button>
           <button
             onClick={submit}
             disabled={submitting}
-            className="glass-btn rounded-full px-5 py-2 text-sm font-semibold"
+            className="glass-btn rounded-full px-6 py-2.5 text-sm font-semibold"
           >
             {submitting ? "…" : tr("submit", locale)}
           </button>
@@ -322,12 +322,12 @@ function WaitingInline({
       )}
 
       <div className="mt-5 flex gap-2">
-        <button onClick={manual} className="glass-btn rounded-full px-4 py-2 text-sm font-semibold">
+        <button onClick={manual} className="glass-btn rounded-full px-6 py-2.5 text-sm font-semibold">
           {tr("i_completed_link", locale)}
         </button>
         <button
           onClick={onCancel}
-          className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 hover:text-white transition"
+          className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 hover:text-white transition"
         >
           {tr("cancel", locale)}
         </button>
