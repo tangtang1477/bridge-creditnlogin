@@ -188,7 +188,7 @@ function PasswordModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-2xl glass-card p-6 animate-fade-in-up"
+        className="w-full max-w-md rounded-2xl modal-surface p-6 animate-fade-in-up"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-lg font-semibold">{tr("set_aideo_password", locale)}</h3>
@@ -201,14 +201,14 @@ function PasswordModal({
           <button
             onClick={onClose}
             disabled={submitting}
-            className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:text-white"
+            className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 transition hover:text-white"
           >
             {tr("cancel", locale)}
           </button>
           <button
             onClick={submit}
             disabled={submitting}
-            className="glass-btn rounded-full px-5 py-2 text-sm font-semibold"
+            className="glass-btn rounded-full px-6 py-2.5 text-sm font-semibold"
           >
             {submitting ? "…" : tr("submit", locale)}
           </button>
