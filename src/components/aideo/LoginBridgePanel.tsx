@@ -322,12 +322,12 @@ function WaitingInline({
       )}
 
       <div className="mt-5 flex gap-2">
-        <button onClick={manual} className="glass-btn rounded-full px-4 py-2 text-sm font-semibold">
+        <button onClick={manual} className="glass-btn rounded-full px-6 py-2.5 text-sm font-semibold">
           {tr("i_completed_link", locale)}
         </button>
         <button
           onClick={onCancel}
-          className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 hover:text-white transition"
+          className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 hover:text-white transition"
         >
           {tr("cancel", locale)}
         </button>
