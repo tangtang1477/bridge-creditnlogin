@@ -186,6 +186,13 @@
     backdrop-filter: blur(8px);
   }
 
+  .modal-surface {
+    background: oklch(0.08 0 0 / 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(113, 240, 246, 0.06) inset;
+  }
+
   .cyan-glow {
     box-shadow: 0 0 24px rgba(113, 240, 246, 0.18), 0 0 60px rgba(113, 240, 246, 0.06);
   }
