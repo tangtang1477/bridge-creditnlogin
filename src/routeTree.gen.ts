@@ -9,11 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudioLoginRouteImport } from './routes/studio-login'
+import { Route as StudioCreditsRouteImport } from './routes/studio-credits'
 import { Route as StudioBridgeRouteImport } from './routes/studio-bridge'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as AideoRouteImport } from './routes/aideo'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StudioLoginRoute = StudioLoginRouteImport.update({
+  id: '/studio-login',
+  path: '/studio-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioCreditsRoute = StudioCreditsRouteImport.update({
+  id: '/studio-credits',
+  path: '/studio-credits',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudioBridgeRoute = StudioBridgeRouteImport.update({
   id: '/studio-bridge',
   path: '/studio-bridge',
@@ -40,12 +52,16 @@ export interface FileRoutesByFullPath {
   '/aideo': typeof AideoRoute
   '/profile': typeof ProfileRoute
   '/studio-bridge': typeof StudioBridgeRoute
+  '/studio-credits': typeof StudioCreditsRoute
+  '/studio-login': typeof StudioLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aideo': typeof AideoRoute
   '/profile': typeof ProfileRoute
   '/studio-bridge': typeof StudioBridgeRoute
+  '/studio-credits': typeof StudioCreditsRoute
+  '/studio-login': typeof StudioLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +69,34 @@ export interface FileRoutesById {
   '/aideo': typeof AideoRoute
   '/profile': typeof ProfileRoute
   '/studio-bridge': typeof StudioBridgeRoute
+  '/studio-credits': typeof StudioCreditsRoute
+  '/studio-login': typeof StudioLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/aideo' | '/profile' | '/studio-bridge'
+  fullPaths:
+    | '/'
+    | '/aideo'
+    | '/profile'
+    | '/studio-bridge'
+    | '/studio-credits'
+    | '/studio-login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aideo' | '/profile' | '/studio-bridge'
-  id: '__root__' | '/' | '/aideo' | '/profile' | '/studio-bridge'
+  to:
+    | '/'
+    | '/aideo'
+    | '/profile'
+    | '/studio-bridge'
+    | '/studio-credits'
+    | '/studio-login'
+  id:
+    | '__root__'
+    | '/'
+    | '/aideo'
+    | '/profile'
+    | '/studio-bridge'
+    | '/studio-credits'
+    | '/studio-login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +104,26 @@ export interface RootRouteChildren {
   AideoRoute: typeof AideoRoute
   ProfileRoute: typeof ProfileRoute
   StudioBridgeRoute: typeof StudioBridgeRoute
+  StudioCreditsRoute: typeof StudioCreditsRoute
+  StudioLoginRoute: typeof StudioLoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/studio-login': {
+      id: '/studio-login'
+      path: '/studio-login'
+      fullPath: '/studio-login'
+      preLoaderRoute: typeof StudioLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio-credits': {
+      id: '/studio-credits'
+      path: '/studio-credits'
+      fullPath: '/studio-credits'
+      preLoaderRoute: typeof StudioCreditsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/studio-bridge': {
       id: '/studio-bridge'
       path: '/studio-bridge'
@@ -107,7 +160,19 @@ const rootRouteChildren: RootRouteChildren = {
   AideoRoute: AideoRoute,
   ProfileRoute: ProfileRoute,
   StudioBridgeRoute: StudioBridgeRoute,
+  StudioCreditsRoute: StudioCreditsRoute,
+  StudioLoginRoute: StudioLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

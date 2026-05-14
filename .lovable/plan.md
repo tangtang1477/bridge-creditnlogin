@@ -1,139 +1,75 @@
-# 方案：MovieFlow 个人主页 × Studio 登录/积分互通
+# 调整方案：拆分两个独立页面 + 文案与圆角细节
 
-## 目标
+## 1. 拆分为两个独立路由（去掉 Tab 切换）
 
-1. 高度还原参考截图，做一个 MovieFlow 个人主页（顶部导航 + 用户资料卡 + Shared/My Likes Tab + 空状态）。
-2. 在该主页上加一个"登录到 Studio"入口按钮，点击后进入**登录互通页面**，按需求里两种场景跑完整交互。
-3. 把 **登录互通** 和 **积分互通** 拆成两个独立页面，支持顶部 Tab 切换查看。
+新路由结构：
 
----
-
-## 路由结构
-
-```text
-/profile                       MovieFlow 个人主页（新增，参考图还原）
-/studio-bridge                 互通中心，两个 Tab：
-  ├─ ?tab=login    登录互通（新增，包含两种场景完整交互）
-  └─ ?tab=credits  积分互通（复用现有 /aideo 页面内容）
+```
+/studio-login    登录互通（独立页面）
+/studio-credits  积分互通（独立页面）
 ```
 
-入口跳转：
-- `/profile` 头像区右侧加 **"登录到 Studio"** 胶囊按钮 → `/studio-bridge?tab=login`
-- 顶部导航 "Aideo 世界" → 同样跳 `/studio-bridge`
-- 旧 `/aideo` 重定向到 `/studio-bridge?tab=credits`，保留 `?mock=` 状态参数
+- 删除 `/studio-bridge`（或仅保留为重定向到 `/studio-login`）。
+- 旧 `/aideo` 的重定向目标改为 `/studio-credits`。
+- 两个页面都用同一个深色壳（`ProfileHeader` + 标题），但不再渲染 Tab 切换栏。
+- 在每个页面顶部右侧加一个**轻量的次级链接**（不是 Tab）："去积分互通 →" / "← 返回登录互通"，方便用户跨页面跳转，但视觉上明确是两个独立页面。
+- `/studio-credits` 在未关联（`link.linked === false`）时仍然显示锁定卡片（"请先完成登录互通"），CTA 跳到 `/studio-login`。
 
----
+### 文件改动
+- 新增 `src/routes/studio-login.tsx`（从原 `studio-bridge.tsx` 抽出，只渲染 `LoginBridgePanel` + Ineligible 分支）。
+- 新增 `src/routes/studio-credits.tsx`（只渲染 `CreditsBridgePanel` + Ineligible 分支）。
+- 修改 `src/routes/studio-bridge.tsx` → 改为 `beforeLoad` 重定向到 `/studio-login`（保留 `?mock=` 透传），或直接删除并更新所有引用。
+- 修改 `src/routes/aideo.tsx` 重定向目标 → `/studio-credits`。
+- 修改 `src/components/profile/ProfileCard.tsx`：`登录到 Studio` 按钮 `to="/studio-login"`。
+- 修改 `src/components/aideo/CreditsBridgePanel.tsx`：锁定卡 CTA `to="/studio-login"`。
+- 修改 `src/routes/index.tsx`：入口卡按钮指向新路由（`/studio-login`、`/studio-credits?mock=linked`、`/studio-login?mock=occupied`、`/studio-login?mock=ineligible`）。
 
-## 页面 1：`/profile` 个人主页（高度还原参考图）
+## 2. "汇率" → "比例"
 
-布局（深黑底 #000，参考图风格）：
+`src/lib/aideo/i18n.ts`：
+- `rate.zh`: "汇率" → "比例"
+- `rate.en`: "Rate" → "Ratio"
 
-```text
-┌────────────────────────────────────────────────────────────────────┐
-│ [M]  首页  Aideo世界  工具箱  素材资产  频道  工作室    [Free Credit] │
-│                              [✦ 75354 ▾] [🔔] [💬] [⋯] [充值积分]   │
-│                                                       [🌐 ZH ▾] [👤]│
-├────────────────────────────────────────────────────────────────────┤
-│  ⭕         la                                                       │
-│  L          Likes 0  |  Credit rewards 0  |  Fission cash $0.00     │
-│             [→ 登录到 Studio] (新增按钮，cyan glow)                  │
-├────────────────────────────────────────────────────────────────────┤
-│  Shared    My Likes                                                  │
-│  ─────                                                               │
-│                                                                      │
-│                       📁                                             │
-│                  No posts yet~                                       │
-└────────────────────────────────────────────────────────────────────┘
-```
+`TransferConfirmDialog` 已经用 `tr("rate", locale)`，所以只改 i18n 即可。
 
-要点：
-- Logo "M" 紫蓝渐变；头像描青色环（呼应 Studio 主色）
-- 顶部右侧积分胶囊、充值积分按钮使用现有 `.glass-btn` 样式
-- "登录到 Studio" 按钮：`.glass-btn` + 右箭头图标，hover 时青色发光加强
-- Shared / My Likes 用下划线 Tab（active 下划线）
-- 空状态居中蓝色文件夹 emoji + "No posts yet~"
-- 顶部导航和资料卡数据用 mock 静态值
+## 3. 提交按钮圆角加大
 
----
+把所有"提交/确认/转移"主按钮统一从 `rounded-xl` 改为 `rounded-full`，与页面其他胶囊按钮一致：
 
-## 页面 2：`/studio-bridge` 互通中心
+- `src/components/aideo/TransferPanel.tsx`：
+  - "校验可用性" 按钮 `rounded-xl` → `rounded-full`
+  - "转移" 按钮 `rounded-xl` → `rounded-full`
+- `src/components/aideo/TransferConfirmDialog.tsx`：
+  - "取消" `rounded-xl` → `rounded-full`
+  - "确认转移" `rounded-xl` → `rounded-full`
+- `src/components/aideo/LoginBridgePanel.tsx` 内 `PasswordModal` 已经是 `rounded-full`，无需改。
 
-顶部新增切换 Tab（pill 样式，沿用 aideo-dark 主题）：
+输入框（`rounded-xl`）保持不变，只调按钮。
 
-```text
-┌─ Studio Bridge ─────────────────────────────┐
-│  [ 登录互通 ]  [ 积分互通 ]                   │
-└─────────────────────────────────────────────┘
-```
+## 4. 让"邮箱未占用"场景更显眼
 
-- Tab 状态用 `?tab=login|credits` 同步到 URL
-- 默认 `login`
-- 切换不刷新，仅切换内部组件
+当前默认 mock（无 `?mock=` 参数）就是 `unlinked`，点击 "关联并打开 Studio" 会触发 `needs_password` → 弹出密码模态。但用户没看到，可能因为：
+- 入口（首页 + Profile 卡）没有显式的"未占用邮箱"演示链接；
+- "关联并打开 Studio" 按钮的视觉提示不够明确（用户没意识到点击后就是这个场景）。
 
-### Tab A — 登录互通（新增）
+修复：
+- `src/routes/index.tsx` 入口卡片中**新增一个明确的链接**："Login Bridge — 邮箱未占用（默认）" → `/studio-login?mock=unlinked`，与 `?mock=occupied`、`?mock=linked` 并排。
+- `src/components/aideo/LoginBridgePanel.tsx` 在 `idle` 状态下，CTA 上方加一行小提示文案："首次关联会让你为同邮箱的 Studio 账号设置密码。"（i18n 新增 `link_hint_first_time`）。
+- Profile 卡的 "登录到 Studio" 按钮维持 `to="/studio-login"`（不带 mock，使用默认 unlinked）。
 
-主卡片：显示 MovieFlow 邮箱 + 关联状态 + 一个主 CTA "关联并打开 Studio"。
+i18n 新增：
+- `link_hint_first_time.zh`: "首次关联会创建同邮箱的 Studio 账号，请先设置密码。"
+- `link_hint_first_time.en`: "First-time linking creates a Studio account with this email — set a password to continue."
+- 新增页面间跳转文案 `goto_credits_bridge` / `back_to_login_bridge`（zh: "去积分互通 →" / "← 返回登录互通"）。
+- 删除不再使用的 `tab_login_bridge` / `tab_credits_bridge`（可保留，无害）。
 
-点击 CTA 后调用 `linkStart()`（已存在 mock），按返回分支驱动两套交互：
+## 5. 验收
 
-**场景一 · 邮箱未占用** (`needs_password`)
-1. 弹出 **设置 Studio 密码** 模态（复用现有 `PasswordModal`，但文案改为"设置 Studio 密码 / 确认密码"）
-2. 前端基础校验（≥8 位、两次一致），错误用 toast
-3. 提交 → `linkCreateAccount(pw)` → 后端创建同邮箱账号 + 绑定
-4. 进入 **绑定中** 状态卡（轮询 5s 内自动完成）
-5. 绑定成功 → 自动调用 `handoffCreate(target_path)` → `window.open(handoff_url)` 新标签打开 Studio callback
-6. 当前页切到"已关联"状态，显示"打开 Studio"按钮（后续点击直接走 handoff，不再要密码）
-
-**场景二 · 邮箱已占用** (`requires_aideo_auth`)
-1. 直接 `window.open(aideo_auth_url)` 新标签打开 Studio 鉴权页
-2. 当前页显示 **等待 Studio 端完成鉴权** 卡片（轮询 + 窗口聚焦刷新 + "我已完成"按钮，复用 `WaitingOverlay` 思路但改成 inline 卡片更贴合页面，不用全屏遮罩）
-3. Studio 端校验密码 + 绑定 → 轮询返回 `linked: true`
-4. 同样自动 handoff 打开目标页
-
-**已关联态**：
-- 顶部绿色徽标 "已关联 · email"
-- 主 CTA 改为 "打开 Studio"（→ handoffCreate → 新标签）
-- 次按钮 "解除关联（即将上线）" 占位禁用
-
-**Mock 联动**：复用 `?mock=ineligible|unlinked|occupied|linked`。
-
-### Tab B — 积分互通（复用现有）
-
-把现有 `/aideo` 页面里 `LinkStatusCard / BalanceCards / TransferPanel / TransferHistoryTable` 部分原样搬进来。`IneligibleView`、`LinkAccountFlow` 由 Tab A 负责，这里只在 `link.linked === true` 时渲染积分模块；未关联时显示一个引导卡："请先在『登录互通』完成关联" + 跳转按钮。
-
----
-
-## 文件改动
-
-新增：
-- `src/routes/profile.tsx` — 个人主页（参考图还原）
-- `src/components/profile/ProfileHeader.tsx` — 顶部导航（含 logo / 主导航 / 积分 / 充值 / 语言 / 头像）
-- `src/components/profile/ProfileCard.tsx` — 头像 + 用户名 + 数据 + "登录到 Studio" 按钮
-- `src/components/profile/EmptyPosts.tsx` — Shared / My Likes Tab + 空状态
-- `src/routes/studio-bridge.tsx` — 互通中心壳，包含 Tab 切换
-- `src/components/aideo/LoginBridgePanel.tsx` — Tab A 登录互通主面板（重组现有 `LinkAccountFlow` 流程，inline 化）
-- `src/components/aideo/CreditsBridgePanel.tsx` — Tab B 积分互通（抽取自 `aideo.tsx`）
-
-修改：
-- `src/routes/aideo.tsx` → 改为重定向到 `/studio-bridge?tab=credits`（或直接删，更新 `index.tsx` 入口卡片）
-- `src/routes/index.tsx` → 入口卡新增 "MovieFlow Profile (`/profile`)" 和 "Studio Bridge (`/studio-bridge`)"
-- `src/lib/aideo/i18n.ts` → 新增个人主页 + Tab 切换文案（zh/en）
-- `src/lib/aideo/mock-api.ts` → 新增 `getMockProfile()`（用户名 la、Likes/Credit rewards/Fission cash 数据）
-
-不动：
-- `mock-api.ts` 现有 `linkStart / linkCreateAccount / handoffCreate / getEligibility / getLinkStatus` 等接口
-- `styles.css`（沿用现有 `.glass-btn` / `.glass-card` / `aideo-dark` 主题，必要时仅微调；本轮不改色板）
-
----
-
-## 验证
-
-1. `/profile` 视觉与参考图对照（顶部 nav 项、紫色 M logo、青色头像环、用户名"la"、三项数据、Shared/My Likes、文件夹空状态、间距）。
-2. 点击 "登录到 Studio" → 进入 `/studio-bridge?tab=login`。
-3. `?mock=unlinked` → 走场景一：密码模态 → 等待 → 自动 handoff 弹新标签。
-4. `?mock=occupied` → 走场景二：直接弹 Studio 鉴权页 + inline 等待卡 + 手动刷新可触发完成。
-5. `?mock=linked` → 直接显示"打开 Studio"按钮 + 切到积分 Tab 可看到余额/转账。
-6. `?mock=ineligible` → 两个 Tab 都显示订阅不达标卡片。
-7. Tab 切换 URL 同步、刷新保留状态。
-8. `/aideo?mock=linked` 旧链接自动跳到 `/studio-bridge?tab=credits&mock=linked`。
-
+1. 首页能看到 4 个独立入口：Profile / Login Bridge / Credits Bridge (linked) / Login Bridge (occupied) / Login Bridge (ineligible)。
+2. `/studio-login`（默认）→ 显示"未关联"卡 + 提示"首次关联会创建账号"，点 CTA → 弹出"设置 Studio 密码"模态。
+3. `/studio-login?mock=occupied` → 直接打开 Studio 鉴权窗 + inline 等待卡。
+4. `/studio-login?mock=linked` → 显示"打开 Studio"按钮。
+5. `/studio-credits` 未关联 → 显示锁定卡，CTA 跳 `/studio-login`；`?mock=linked` → 显示余额 + 转账面板。
+6. 转账确认弹窗中"汇率"显示为"比例"。
+7. 所有按钮（校验/转移/确认/取消）都是 `rounded-full`，视觉统一。
+8. 旧 `/aideo` 与 `/studio-bridge` 链接自动跳到新路由。
