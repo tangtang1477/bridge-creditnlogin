@@ -2,36 +2,36 @@ import type { AideoErrorCode, Locale } from "./types";
 
 const MAP: Record<AideoErrorCode, { zh: string; en: string }> = {
   AIDEO_NOT_ELIGIBLE_SUBSCRIPTION: {
-    zh: "当前订阅不满足开通 Aideo 的条件，请升级到 Pro 及以上方案。",
+    zh: "当前订阅不满足开通 Studio 的条件，请升级到 Pro 及以上方案。",
     en: "Your current subscription is not eligible. Upgrade to Pro or above.",
   },
   AIDEO_EMAIL_OCCUPIED: {
-    zh: "该邮箱已注册 Aideo 账号，请使用 Aideo 密码完成验证。",
-    en: "This email already has an Aideo account. Verify with your Aideo password.",
+    zh: "该邮箱已注册 Studio 账号，请使用 Studio 密码完成验证。",
+    en: "This email already has a Studio account. Verify with your Studio password.",
   },
   AIDEO_PASSWORD_INVALID: {
-    zh: "Aideo 密码不正确，请重试。",
-    en: "Incorrect Aideo password.",
+    zh: "Studio 密码不正确，请重试。",
+    en: "Incorrect Studio password.",
   },
   AIDEO_ALREADY_LINKED: {
-    zh: "该 Aideo 账号已绑定其他 MovieFlow 用户。",
-    en: "This Aideo account is already linked to another MovieFlow user.",
+    zh: "该 Studio 账号已绑定其他 MovieFlow 用户。",
+    en: "This Studio account is already linked to another MovieFlow user.",
   },
   MOVIEFLOW_ALREADY_LINKED: {
-    zh: "当前 MovieFlow 账号已绑定 Aideo。",
-    en: "This MovieFlow account is already linked to an Aideo account.",
+    zh: "当前 MovieFlow 账号已绑定 Studio。",
+    en: "This MovieFlow account is already linked to a Studio account.",
   },
   AIDEO_ACCOUNT_LINKED_TO_OTHER: {
-    zh: "该 Aideo 账号已被其他用户占用。",
-    en: "This Aideo account is linked to another user.",
+    zh: "该 Studio 账号已被其他用户占用。",
+    en: "This Studio account is linked to another user.",
   },
   MOVIEFLOW_INSUFFICIENT_TRANSFERABLE_CREDITS: {
     zh: "MovieFlow 可转余额不足。",
     en: "Insufficient MovieFlow transferable credits.",
   },
   AIDEO_INSUFFICIENT_TRANSFERABLE_CREDITS: {
-    zh: "Aideo 可转余额不足。",
-    en: "Insufficient Aideo transferable credits.",
+    zh: "Studio 可转余额不足。",
+    en: "Insufficient Studio transferable credits.",
   },
   TRANSFER_AMOUNT_INVALID: {
     zh: "转移数量无效，必须为正整数。",
@@ -50,8 +50,8 @@ const MAP: Record<AideoErrorCode, { zh: string; en: string }> = {
     en: "Handoff link already used. Please retry.",
   },
   AIDEO_SERVICE_UNAVAILABLE: {
-    zh: "Aideo 服务暂不可用，请稍后重试。",
-    en: "Aideo service is unavailable. Please try again later.",
+    zh: "Studio 服务暂不可用，请稍后重试。",
+    en: "Studio service is unavailable. Please try again later.",
   },
 };
 
