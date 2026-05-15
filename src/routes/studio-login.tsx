@@ -55,7 +55,7 @@ function StudioLoginPage() {
       <Toaster theme="dark" position="top-center" />
       <ProfileHeader locale={locale} setLocale={setLocale} active="nav_studio_world" />
 
-      <main className="mx-auto w-full max-w-3xl px-4 pb-24 pt-8 sm:px-6 lg:px-8">
+      <main className="mx-auto w-full max-w-5xl px-4 pb-24 pt-8 sm:px-6 lg:px-8">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
